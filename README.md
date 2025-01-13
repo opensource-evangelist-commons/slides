@@ -23,3 +23,33 @@
 | 2024-12-21 | 上海 | [借助AI编写开源大事记](./zhuangbiaowei/AI编写开源大事记.pdf) | 开源技术 |
 | 2025-01-06 | 上海 | [深入理解开源](./zhuangbiaowei/深入理解开源.pdf) | 学术讨论 |
 | 不详 | 北京 | [从旧约到新约-我读大教堂与集市](./zhuangbiaowei/从旧约到新约-我读大教堂与集市.pdf) | 读书会 |
+
+
+## [「开源之道」·适兕](https://opensourceway.community/)
+
+| 2024 |  | 开源内容标题 | 时长（小时） |
+| ---- | ---- | ---- | ---- |
+|||[开源与经济学第一讲：开源与经济学](https://1drv.ms/p/s!Arg2k_5HJFrbgfs3NUftlK38dzr_kA)|2|
+|||[开源与经济学第二讲：软件的生产、分销和消费](https://1drv.ms/p/s!Arg2k_5HJFrbgfts1YzTth73KhL6Sg)|2|
+|||[开源与经济学第三讲：数字时代的知识财产法演变与开源许可](https://1drv.ms/p/s!Arg2k_5HJFrbgf1HYWuLmCX8hMDvCA)|2|
+|||[开源与经济学第四讲：商业模式：规则下的具体操作](https://1drv.ms/p/s!Arg2k_5HJFrbgf4ZhYQgwpi9lNAsDQ)|2|
+|||[开源与经济学第五讲：软件开发的劳动力市场](https://1drv.ms/p/s!Arg2k_5HJFrbgoBSVNL2c09dchSO5g)|2|
+|||[开源与经济学第六讲：交易成本与路径依赖](https://1drv.ms/p/s!Arg2k_5HJFrbgoF42VpKjBRLPe7EzA)|2|
+|||[开源与经济学第七讲：组织结构与治理](https://1drv.ms/p/s!Arg2k_5HJFrbgoJLLhanoUlyo9620w?e=6Ke7fU)|2|
+|||[开源与经济学第八讲：文化的重要作用](https://1drv.ms/p/s!Arg2k_5HJFrbgoFU7xMG57XBAaHzbA?e=mHmZ3o)|2|
+|||[开源与经济学第九讲：商业价值与社会价值](https://1drv.ms/p/s!Arg2k_5HJFrbgoRjQkaewcZDlKXANA?e=5k1UJ2)|2|
+|||[开源与经济学第十讲：模块化设计与unbundling](https://1drv.ms/p/c/db5a2447fe9336b8/Ebg2k_5HJFoggNtZgwAAAAABRxWVyoz8UhgCbub48FKfTQ?e=4OcBCm)|2|
+|||[Linus torvalds 金句赏析](https://1drv.ms/p/c/db5a2447fe9336b8/Ebg2k_5HJFoggNsAfgAAAAABDiwBQSJLkoas-cL4Rg0VmQ)|1|
+|||[保护集体财产：自组织共同体和知识财产制度创新](https://1drv.ms/p/c/db5a2447fe9336b8/Ebg2k_5HJFoggNtQgAAAAAABwRjlBz5anDFBHPNAov13QQ)|1|
+|||[复杂：我们的日常面对](https://1drv.ms/p/c/db5a2447fe9336b8/Ebg2k_5HJFoggNtJgQAAAAABpoyqyvLYrdS9OcoIMVUDIA)|1.5|
+|||[网络的财富:我们是如何错失未来的](https://1drv.ms/p/c/db5a2447fe9336b8/Ebg2k_5HJFoggNtCggAAAAABGxpM1yBvxakrPW3I8ZJ2Fg)|1.5|
+|||[《unbundling、全球化与开源》](https://1drv.ms/p/c/db5a2447fe9336b8/Ebg2k_5HJFoggNtZgwAAAAABRxWVyoz8UhgCbub48FKfTQ?e=4OcBCm)|2|
+|||[《谁是斯图尔特·布兰德》阅读感悟](https://1drv.ms/p/c/db5a2447fe9336b8/Ebl2GoJRJb5KmvDILe7p5l4BXoHOi6KKJn1VfcYK-W4NcA)|1|
+|||[「开源之史」大纲](https://1drv.ms/p/s!Arg2k_5HJFrbgfs3NUftlK38dzr_kA)|2|
+|||开源通识讲座之[企业开源战略系列总则](https://1drv.ms/p/s!Arg2k_5HJFrbgoYcVy_VK1AuaPyVQg?e=SPQV9h)|2|
+|||开源通识讲座之[企业开源战略系列案例分析之 Netscape ](https://1drv.ms/p/s!Arg2k_5HJFrbgoYpHMQaThE-ucYUFw?e=TDeNIq)||
+|||开源通识讲座之[企业开源战略系列案例分析之Google](https://1drv.ms/p/s!Arg2k_5HJFrbgodD5t9mnBwR0FHCIQ?e=CSOzZ7)||
+|||开源通识讲座之[企业开源战略系列案例分析之WrodPress](https://1drv.ms/p/s!Arg2k_5HJFrbgodF29iYOtjY20e1nw?e=iBJaCO)||
+|||开源软件许可简史之一：[软件许可的起源](https://1drv.ms/p/s!Arg2k_5HJFrbgfwxNCheepmM8PuqYg)||
+|||开源软件许可简史之二：[学术开源许可的出现和演变](https://1drv.ms/p/s!Arg2k_5HJFrbgf0RTxFlnXs1F3K5fg)||
+|||开源通识讲座之[开源世界的上游思维与上游优先](https://1drv.ms/p/s!Arg2k_5HJFrbgoN5YXD2yaAQFLjftQ)||
