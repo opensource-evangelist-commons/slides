@@ -30,7 +30,7 @@
 | 2025-09-29 | 上海 | [如何在开源世界做案例研究？](./zhuangbiaowei/如何在开源世界做案例研究？.pdf) | 学术讨论 |
 | 2025-10-03 | 在线 | [AI辅助入门软件开发——以微信小程序为例](./zhuangbiaowei/AI辅助入门软件开发——以微信小程序为例.pdf) | AI辅助入门 |
 | 2025-10-15 | 上海 | [Vibe Coding From Idea to Product](./zhuangbiaowei/Vibe_Coding_From_Idea_to_Product.pdf) | AI辅助开发 |
-| 2025-10-31 | 上海 | [](./zhuangbiaowei/开源伦理研究：理论、实践与挑战.pdf) | 开源伦理 |
+| 2025-10-31 | 上海 | [开源伦理研究：理论、实践与挑战](./zhuangbiaowei/开源伦理研究：理论、实践与挑战.pdf) | 开源伦理 |
 | 不详 | 北京 | [从旧约到新约-我读大教堂与集市](./zhuangbiaowei/从旧约到新约-我读大教堂与集市.pdf) | 读书会 |
 
 
