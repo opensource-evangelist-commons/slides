@@ -32,6 +32,8 @@
 | 2025-10-15 | 上海 | [Vibe Coding From Idea to Product](./zhuangbiaowei/Vibe_Coding_From_Idea_to_Product.pdf) | AI辅助开发 |
 | 2025-10-31 | 上海 | [开源伦理研究：理论、实践与挑战](./zhuangbiaowei/开源伦理研究：理论、实践与挑战.pdf) | 开源伦理 |
 | 2025-11-25 | 上海 | [如何做战略规划](./zhuangbiaowei/如何做战略规划.pdf) | 开源战略 |
+| 2025-12-06 | 北京 | [天工开物开源基金会的开源教育激励计划](./zhuangbiaowei/开源教育激励计划.pdf) | 开源教育 |
+| 2025-12-10 | 武汉 | [开源生态与商业模式设计](./zhuangbiaowei/开源生态与商业模式设计.pdf) | 开源商业 |
 | 不详 | 北京 | [从旧约到新约-我读大教堂与集市](./zhuangbiaowei/从旧约到新约-我读大教堂与集市.pdf) | 读书会 |
 
 
