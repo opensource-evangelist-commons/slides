@@ -69,4 +69,4 @@
 ##吴汉钦
 | 日期 | 地点 | 标题 | 类别 |
 | ---- | ---- | ---- | ---- |
-| 2025.11 | 佛山 |开源项目冷启动问题 (https://github.com/Wuhanqin/my-presentations/blob/Wuhanqin-patch-1/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98-%E5%B9%BF%E4%B8%9C%E9%A1%BA%E5%BE%B7-%E5%8F%AF%E5%88%86%E4%BA%AB%E7%89%88%E6%9C%AC.pdf) | 布道分享 |
+| 2025.11 | 佛山 | [开源项目冷启动问题](https://github.com/Wuhanqin/my-presentations/blob/Wuhanqin-patch-1/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98-%E5%B9%BF%E4%B8%9C%E9%A1%BA%E5%BE%B7-%E5%8F%AF%E5%88%86%E4%BA%AB%E7%89%88%E6%9C%AC.pdf) | 布道分享 |
