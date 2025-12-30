@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 新手建仓指南- 胡琦</title>
+    <style>
+        :root {
+            --bg-color: #0d1117; /* GitHub Dark Dimmed */
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-blue: #58a6ff;
+            --accent-green: #238636;
+            --accent-purple: #bc8cff; /* AI vibe */
+            --border-color: #30363d;
+            --card-bg: #161b22;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: #000;
+            color: var(--text-primary);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Slide Container to maintain 16:9 aspect ratio */
+        #presentation {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            /* Scaling logic handled by JS */
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 50px 70px; /* Reduced padding */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.98);
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem; /* Slightly smaller */
+            color: var(--text-primary);
+            margin-bottom: 25px; /* Reduced margin */
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: '#';
+            color: var(--accent-green);
+            margin-right: 15px;
+            font-weight: 300;
+        }
+
+        h3 {
+            font-size: 1.5rem; /* Slightly smaller */
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            margin-top: 5px;
+        }
+
+        p, li {
+            font-size: 1.2rem; /* Reduced from 1.4rem for better fit */
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        /* Hyperlinks Styling */
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-blue);
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            z-index: 20; /* Ensure links are above generic click areas */
+        }
+        
+        a:hover {
+            background-color: rgba(88, 166, 255, 0.15);
+            border-bottom-style: solid;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        blockquote {
+            background: var(--card-bg);
+            border-left: 5px solid var(--accent-purple);
+            padding: 15px 25px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .code-block {
+            background-color: var(--card-bg);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            color: var(--accent-blue);
+            border: 1px solid var(--border-color);
+            font-size: 0.9em;
+        }
+
+        /* Specific Layouts */
+        .cover-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1c2128 0%, #0d1117 100%);
+        }
+
+        .cover-slide h1 {
+            font-size: 5rem;
+            margin-bottom: 30px;
+        }
+
+        .cover-slide h3 {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        .profile-card {
+            margin-top: 60px;
+            background: var(--card-bg);
+            padding: 30px 50px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            display: inline-block;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            height: 100%;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: auto;
+        }
+        
+        .col-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 0; /* Remove bottom margin in grids */
+            transition: transform 0.2s;
+            height: 100%; /* Fill grid cell */
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .step-number {
+            display: inline-block;
+            min-width: 35px;
+            height: 35px;
+            background: var(--accent-blue);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .tag-blue { background: rgba(88, 166, 255, 0.2); color: #58a6ff; }
+        .tag-green { background: rgba(35, 134, 54, 0.2); color: #3fb950; }
+        .tag-purple { background: rgba(188, 140, 255, 0.2); color: #bc8cff; }
+
+        /* Navigation Controls */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-nav {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-family: monospace;
+        }
+        
+        .footer-logo {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-weight: bold;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="presentation">
+        <!-- Persistent Elements -->
+        <div class="footer-logo">
+            <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github">
+                <path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.46-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+            </svg>
+            <span>GitHub 101</span>
+        </div>
+        <div class="page-number" id="pageNumber">1 / 11</div>
+        <div class="progress-bar" id="progressBar"></div>
+
+        <!-- SLIDE 1: COVER -->
+        <div class="slide cover-slide active">
+            <h1>GitHub 新手起步</h1>
+            <h3>从建仓到开源协作</h3>
+            <div style="margin: 20px 0; font-size: 1.5rem; color: var(--accent-blue);">“<a href="https://mp.weixin.qq.com/s/-q0W_Wv4f-_Xx3toNt1bOw" target="_blank">蓉客松</a>”知识分享系列</div>
+            
+            <div class="profile-card">
+                <p><strong>主讲人：</strong> <a href="https://chancefoundation.org.cn/" target="_blank">CHANCE</a>布道先锋 胡琦</p>
+                <p><strong>目标听众：</strong> 编程新手 / 高校学生 / 想要参与开源的开发者</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: WHAT IS GITHUB (Optimized Layout) -->
+        <div class="slide">
+            <h2>什么是 GitHub？</h2>
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <blockquote style="font-size: 1.4rem; margin-top: 0;">"全球最大的开源社区"<br>+<br>"AI 时代的开发者基础设施"</blockquote>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="card" style="padding: 20px;">
+                        <h3 style="margin-top:0;">Git + Hub</h3>
+                        <ul>
+                            <li><strong>Git:</strong> 版本控制工具（就像游戏的存档，随时回退）</li>
+                            <li><strong>Hub:</strong> 存放、分享、讨论代码的社区</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="padding: 20px;">
+                        <h3 style="margin-top:0;">Why Use It?</h3>
+                        <ul>
+                            <li><strong>代码托管：</strong>云端备份，防止丢失</li>
+                            <li><strong>个人品牌：</strong>GitHub 绿墙是最好的名片</li>
+                            <li><strong>开源协作：</strong>全球 90% 开源项目（含 AI 模型）的大本营</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: PREPARATION -->
+        <div class="slide">
+            <h2>准备工作（大陆地区特别提示）</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>1. 网络环境准备</h3>
+                    <p><strong>现状：</strong>国内访问偶有不稳（图片慢、连接超时）</p>
+                    <p><strong>解决方案：</strong></p>
+                    <ul>
+                        <li>使用 <a href="https://github.com/BeyondDimension/SteamTools" target="_blank">Watt Toolkit</a> (原 Steam++) 等合法工具</li>
+                        <li>修改 Hosts 文件（进阶）</li>
+                        <li>保持耐心，刷新重试</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>2. 账号注册</h3>
+                    <ul>
+                        <li>访问 <strong><a href="https://github.com" target="_blank">github.com</a></strong></li>
+                        <li>建议邮箱：Gmail, Outlook, QQ邮箱</li>
+                        <li><strong style="color:var(--accent-purple)">注意：</strong>用户名要专业！</li>
+                        <li style="font-size: 0.9em; margin-top: 10px; color: var(--text-secondary);">避免乱码如 <code>user123456</code>，它会伴随你的职业生涯</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: CREATE REPO (Optimized: 2x2 Grid) -->
+        <div class="slide">
+            <h2>核心实操：创建第一个仓库</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 70%; align-content: center;">
+                <div class="card" style="display: flex; align-items: start;">
+                    <span class="step-number">1</span>
+                    <div>
+                        <strong>点击右上角</strong><br>找到 <code>+</code> 号，选择 <strong>New repository</strong>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; align-items: start;">
+                    <span class="step-number">2</span>
+                    <div>
+                        <strong>Repository name (必填)</strong><br>起个英文名，如 <code>my-first-project</code>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; align-items: start;">
+                    <span class="step-number">3</span>
+                    <div>
+                        <strong>Description (选填)</strong><br>一句话介绍项目是做什么的
+                    </div>
+                </div>
+                <div class="card" style="display: flex; align-items: start; border-color: var(--accent-blue);">
+                    <span class="step-number">4</span>
+                    <div>
+                        <strong>Public vs Private</strong>
+                        <div style="margin-top: 8px;">
+                            <span class="tag tag-green">Public (公开)</span> 适合开源、展示<br>
+                            <span class="tag tag-purple">Private (私有)</span> 适合作业、毕设
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: CONFIGURATION (Optimized: 3 Columns) -->
+        <div class="slide">
+            <h2>关键配置：别急着点 Create！</h2>
+            <p style="margin-bottom: 20px;">勾选以下“初始化三件套”，让仓库更专业：</p>
+            
+            <div class="grid-3" style="height: 60%;">
+                <div class="card">
+                    <h3>1. README</h3>
+                    <p>项目的“说明书”，使用 Markdown 编写。</p>
+                </div>
+                <div class="card" style="border-color: var(--accent-purple);">
+                    <h3>2. .gitignore (重要!)</h3>
+                    <p>选择编程语言（Python, Java...）</p>
+                    <p style="color: var(--accent-purple); font-size: 1rem;"><strong>作用：</strong>自动忽略垃圾文件（临时文件、密码等）。</p>
+                </div>
+                <div class="card">
+                    <h3>3. License</h3>
+                    <p><strong>MIT:</strong> 最宽松，想开源就选它。</p>
+                    <p><strong>Apache:</strong> 适合大型软件。</p>
+                    <p>不选：保留所有权利。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: UPLOADING CODE (Optimized: 3 Columns + Text Update) -->
+        <div class="slide">
+            <h2>如何上传代码？</h2>
+            <div class="grid-3" style="height: 65%; align-items: stretch;">
+                <div class="card">
+                    <h3>A: Web 上传</h3>
+                    <p style="font-size: 0.9em; color: var(--accent-green); font-weight: bold; margin-bottom: 10px;">最简单</p>
+                    <ol style="margin-left: 20px;">
+                        <li><code>Add file</code> -> <code>Upload</code></li>
+                        <li>拖拽文件</li>
+                        <li>点击 <span style="color:var(--accent-green)">Commit changes</span></li>
+                    </ol>
+                </div>
+                <div class="card" style="border: 2px solid var(--accent-blue);">
+                    <h3>B: <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a></h3>
+                    <p style="font-size: 0.9em; color: var(--accent-blue); font-weight: bold; margin-bottom: 10px;">官方推荐</p>
+                    <ul>
+                        <li>官方桌面版软件</li>
+                        <li>可视化操作</li>
+                        <li>无需记忆复杂指令</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>C: Git 命令行</h3>
+                    <p style="font-size: 0.9em; color: var(--accent-purple); font-weight: bold; margin-bottom: 10px;">进阶掌控</p>
+                    <div class="code-block" style="font-size: 0.8em; text-align: center; margin-bottom: 15px;">
+                        init &rarr; add &rarr; commit &rarr; push
+                    </div>
+                    <p style="font-size: 1.1rem;">AI 时代，人人都是程序员。掌握它，你将更自由地指挥 AI。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: AI VIBE CODING -->
+        <div class="slide">
+            <h2>AI 时代新姿势：Vibe Coding</h2>
+            <blockquote>不写代码也能建仓？让 AI 帮你写！</blockquote>
+            
+            <div class="grid-2">
+                <div class="col-center">
+                    <h3>什么是氛围感编程?</h3>
+                    <p>借助 <strong>Cursor, Windsurf, Trae</strong> 等编辑器。</p>
+                    <p>你负责“想”，AI 负责“写”。</p>
+                    <p>通过对话生成代码，享受创造的“心流”。</p>
+                </div>
+                <div class="col-center">
+                    <div class="card" style="background: linear-gradient(145deg, #161b22, #1f242e);">
+                        <h3>AI 辅助提交流程</h3>
+                        <ul>
+                            <li><strong>自动生成：</strong>描述需求，AI 生成文件</li>
+                            <li><strong>智能提交：</strong>AI 自动写 Commit Message</li>
+                            <li><strong>流程：</strong>对话 &rarr; Accept &rarr; AI Commit &rarr; Push</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: OPEN SOURCE -->
+        <div class="slide">
+            <h2>背景知识：开源协作 (Open Source)</h2>
+            <p>开源不仅仅是公开代码，而是一种协作精神。</p>
+            
+            <div style="display: flex; justify-content: space-around; margin-top: 40px;">
+                <div style="text-align: center;">
+                    <div class="step-number" style="width: 80px; height: 80px; line-height: 80px; font-size: 2rem; margin: 0 auto 20px;">Fork</div>
+                    <p>复刻项目<br>到你的账号</p>
+                </div>
+                <div style="font-size: 3rem; color: var(--text-secondary);">&rarr;</div>
+                <div style="text-align: center;">
+                    <div class="step-number" style="width: 80px; height: 80px; line-height: 80px; font-size: 2rem; margin: 0 auto 20px; background: var(--accent-purple);">Edit</div>
+                    <p>Clone & Edit<br>修复 Bug</p>
+                </div>
+                <div style="font-size: 3rem; color: var(--text-secondary);">&rarr;</div>
+                <div style="text-align: center;">
+                    <div class="step-number" style="width: 80px; height: 80px; line-height: 80px; font-size: 2rem; margin: 0 auto 20px; background: var(--accent-green);">PR</div>
+                    <p>Pull Request<br>请求合并</p>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 40px; text-align: center;">
+                <strong>新手入口：</strong> 修改文档错别字，或寻找标记为 <span class="code-block">good first issue</span> 的任务。
+            </div>
+        </div>
+
+        <!-- SLIDE 9: HACKATHON -->
+        <div class="slide">
+            <h2>背景知识：黑客松 (Hackathon)</h2>
+            <blockquote>程序员的马拉松，脑力的狂欢。</blockquote>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>什么是黑客松？</h3>
+                    <ul>
+                        <li>24-48 小时极限开发</li>
+                        <li>从 0 到 1 做出产品原型</li>
+                        <li>只有主题，没有限制</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>GitHub 的作用</h3>
+                    <ul>
+                        <li><span style="color:var(--accent-blue)">协作中心：</span>团队代码同步</li>
+                        <li><span style="color:var(--accent-green)">作品提交：</span>以 GitHub 链接评审</li>
+                        <li><span style="color:var(--accent-purple)">展示：</span>完善的 README 加分</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: ADVANCED & CHINA PLATFORMS -->
+        <div class="slide">
+            <h2>进阶建议 & 国内生态</h2>
+            
+            <div class="card" style="border-left: 5px solid #da3633; margin-bottom: 20px; padding: 20px;">
+                <h3>⚠️ 安全警告</h3>
+                <p>永远不要把 <strong>数据库密码、API Key、私钥</strong> 上传到 Public 仓库！</p>
+                <p>请善用 <code>.gitignore</code> 或 <code>.env</code> 文件。</p>
+            </div>
+
+            <h3>拥抱国内平台 (Plan B)</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                <div class="card" style="padding: 15px;">
+                    <strong><a href="https://gitee.com/" target="_blank" style="color:var(--text-primary); text-decoration:none;">Gitee (码云)</a></strong><br><span style="font-size:0.8em; color:var(--text-secondary)">国内老牌，速度快</span>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <strong><a href="https://atomgit.com/" target="_blank" style="color:var(--text-primary); text-decoration:none;">AtomGit</a></strong><br><span style="font-size:0.8em; color:var(--text-secondary)">工信部支持，开放原子</span>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <strong><a href="https://www.gitlink.org.cn/" target="_blank" style="color:var(--text-primary); text-decoration:none;">GitLink</a></strong><br><span style="font-size:0.8em; color:var(--text-secondary)">CCF 支持，科研属性强</span>
+                </div>
+                <div class="card" style="padding: 15px;">
+                    <strong><a href="https://cnb.cool/" target="_blank" style="color:var(--text-primary); text-decoration:none;">cnb.cool</a></strong><br><span style="font-size:0.8em; color:var(--text-secondary)">云原生开发，自动化流水线</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: SUMMARY -->
+        <div class="slide">
+            <h2>总结与行动</h2>
+            
+            <div class="grid-2">
+                <div class="col-center">
+                    <h3>Today's To-Do:</h3>
+                    <ol style="margin-left: 20px; font-size: 1.6rem;">
+                        <li style="margin-bottom: 20px;">注册 GitHub 账号</li>
+                        <li style="margin-bottom: 20px;">用 AI 工具写一段代码</li>
+                        <li style="margin-bottom: 20px;">创建 <code>Hello-World</code> 仓库并提交</li>
+                        <li style="margin-bottom: 20px;"><strong>Star</strong> 一个喜欢的开源项目</li>
+                    </ol>
+                </div>
+                <div class="col-center" style="align-items: center; text-align: center;">
+                    <div style="font-size: 4rem; color: var(--accent-purple); margin-bottom: 20px;">&lt;/&gt;</div>
+                    <h1 style="font-size: 3rem;">Let's Code<br>with AI!</h1>
+                    <p style="margin-top: 30px;">推荐资源：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" style="color:var(--accent-blue);">廖雪峰 Git 教程</a> / <a href="https://search.bilibili.com/all?keyword=Vibe%20Coding" target="_blank" style="color:var(--accent-blue);">B站 Vibe Coding</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn-nav" onclick="prevSlide()">&#8592;</button>
+            <button class="btn-nav" onclick="nextSlide()">&#8594;</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const pageNumber = document.getElementById('pageNumber');
+        const totalSlides = slides.length;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Update Progress Bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Update Page Number
+            pageNumber.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Click navigation (optional, aiming for right/left zones)
+        document.getElementById('presentation').addEventListener('click', (e) => {
+            // Only trigger if not clicking a button OR A HYPERLINK (or inside one)
+            if(e.target.closest('button') || e.target.closest('a')) return;
+
+            const width = window.innerWidth;
+            if (e.clientX > width / 2) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        });
+
+        // Responsive Scaling
+        function scalePresentation() {
+            const presentation = document.getElementById('presentation');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const targetWidth = 1280;
+            const targetHeight = 720;
+
+            const scaleX = windowWidth / targetWidth;
+            const scaleY = windowHeight / targetHeight;
+            
+            // Use the smaller scale to fit within viewport
+            let scale = Math.min(scaleX, scaleY);
+            
+            // Optional: limit max scale if you don't want it huge on 4k screens
+            // scale = Math.min(scale, 1.5); 
+
+            presentation.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener('resize', scalePresentation);
+        // Init
+        scalePresentation();
+        updateSlide();
+    </script>
+</body>
+</html>
