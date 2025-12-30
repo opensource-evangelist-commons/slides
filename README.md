@@ -74,4 +74,4 @@
 ## [胡琦](https://github.com/hu-qi)
 | 日期 | 地点 | 标题 | 类别 |
 | ---- | ---- | ---- | ---- |
-| 2025.12 | 成都 | [Github新手起步从建仓到开源协作](./hu-qi/Github-Create-Repo-101.html) | 开源普及 |
+| 2025.12 | 成都 | [Github新手起步从建仓到开源协作](./hu-qi/Github-Create-Repo-101.pdf) | 开源普及 |

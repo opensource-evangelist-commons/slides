@@ -291,6 +291,11 @@
             border-color: var(--accent-blue);
         }
 
+        /* Print Button Specifics */
+        .btn-nav svg {
+            pointer-events: none;
+        }
+
         .progress-bar {
             position: absolute;
             bottom: 0;
@@ -320,6 +325,42 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            body {
+                background: none;
+                height: auto;
+                overflow: visible;
+                display: block;
+            }
+            #presentation {
+                width: 100% !important;
+                height: auto !important;
+                position: relative !important;
+                transform: none !important;
+                box-shadow: none !important;
+                overflow: visible !important;
+                background-color: var(--bg-color) !important;
+            }
+            .slide {
+                position: relative !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                page-break-after: always;
+                break-after: page;
+                height: 100vh !important;
+                width: 100% !important;
+                top: auto;
+                left: auto;
+                border: 0;
+            }
+            /* Hide non-printable elements */
+            .controls, .progress-bar, .page-number {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -621,6 +662,14 @@
         
         <!-- Controls -->
         <div class="controls">
+            <!-- Print/Export PDF Button -->
+            <button class="btn-nav" onclick="printPDF()" title="导出为 PDF (Ctrl+P)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+            </button>
             <button class="btn-nav" onclick="prevSlide()">&#8592;</button>
             <button class="btn-nav" onclick="nextSlide()">&#8594;</button>
         </div>
@@ -661,6 +710,10 @@
                 currentSlide--;
                 updateSlide();
             }
+        }
+        
+        function printPDF() {
+            window.print();
         }
 
         // Keyboard navigation
