@@ -76,3 +76,4 @@
 | 日期 | 地点 | 标题 | 类别 |
 | ---- | ---- | ---- | ---- |
 | 2025.12 | 成都 | [Github新手起步从建仓到开源协作](./hu-qi/Github-Create-Repo-101.pdf) | 开源普及 |
+| 2026.01 | 广州 | [Astron助力智能体快速构建与应用](./hu-qi/Astron-Fast-Tracking-AI-Agent-Innovation.pdf) | 开源技术 |
